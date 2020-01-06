@@ -15,11 +15,11 @@
     <result column="available" jdbcType="INTEGER" property="available" />
   </resultMap>
   <sql id="Base_Column_List">
-    userid, loginname, identity, realname, sex, address, phone, pwd, position, type, 
+    userid, loginname, identity, realname, sex, address, phone, pwd, position, type,
     available
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from sys_user
     where userid = #{userid,jdbcType=INTEGER}
@@ -29,13 +29,13 @@
     where userid = #{userid,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.wang.sys.domain.SysUser">
-    insert into sys_user (userid, loginname, identity, 
-      realname, sex, address, 
-      phone, pwd, position, 
+    insert into sys_user (userid, loginname, identity,
+      realname, sex, address,
+      phone, pwd, position,
       type, available)
-    values (#{userid,jdbcType=INTEGER}, #{loginname,jdbcType=VARCHAR}, #{identity,jdbcType=VARCHAR}, 
-      #{realname,jdbcType=VARCHAR}, #{sex,jdbcType=INTEGER}, #{address,jdbcType=VARCHAR}, 
-      #{phone,jdbcType=VARCHAR}, #{pwd,jdbcType=VARCHAR}, #{position,jdbcType=VARCHAR}, 
+    values (#{userid,jdbcType=INTEGER}, #{loginname,jdbcType=VARCHAR}, #{identity,jdbcType=VARCHAR},
+      #{realname,jdbcType=VARCHAR}, #{sex,jdbcType=INTEGER}, #{address,jdbcType=VARCHAR},
+      #{phone,jdbcType=VARCHAR}, #{pwd,jdbcType=VARCHAR}, #{position,jdbcType=VARCHAR},
       #{type,jdbcType=INTEGER}, #{available,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.wang.sys.domain.SysUser">
@@ -169,7 +169,8 @@
     from sys_user
     where loginname=#{loginname} and pwd=#{pwd}
   </select>
-  !--用户查询-->
+
+  <!--用户查询-->
   <select id="queryAllUser" resultMap="BaseResultMap" >
     select
     <include refid="Base_Column_List" />
@@ -201,6 +202,5 @@
   <insert id="insertUserRole">
     insert into sys_role_user(uid,rid) VALUES (#{uid},#{rid})
   </insert>
-
 
 </mapper>
